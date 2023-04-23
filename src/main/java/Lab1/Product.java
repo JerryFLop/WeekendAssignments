@@ -36,7 +36,7 @@ public class Product {
         }
         System.out.printf("%-10s %-10d %-4.1f %6.1f %10.1f\n", name, qty, payment, travel, totalCost);
 
-        System.out.printf("%s\t","Thank you. Come Again!");
+        System.out.println("Thank you. Come Again!");
     }
 
 }
