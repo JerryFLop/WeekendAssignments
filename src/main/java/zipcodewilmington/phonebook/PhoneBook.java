@@ -1,9 +1,11 @@
 package zipcodewilmington.phonebook;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
 //import java.util.HashMap;
-
-
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Iterator;
 /**
  * Created by leon on 1/23/18.
  * Made WAY better by kristofer 6/16/20
@@ -17,23 +19,28 @@ public class PhoneBook {
     }
 
     public PhoneBook() {
-        this(new HashMap<>());
+        this(new LinkedHashMap<>());
     }
 
+
     public void add(String name, String phoneNumber) {
+
     }
 
     public void addAll(String name, String... phoneNumbers) {
+
     }
 
     public void remove(String name) {
+        phonebook.remove(name);
     }
 
     public Boolean hasEntry(String name) {
-        return null;
+        return phonebook.containsKey(name);
     }
 
     public List<String> lookup(String name) {
+
         return null;
     }
 
@@ -46,6 +53,6 @@ public class PhoneBook {
     }
 
     public Map<String, List<String>> getMap() {
-        return null;
+        return phonebook;
     }
 }
