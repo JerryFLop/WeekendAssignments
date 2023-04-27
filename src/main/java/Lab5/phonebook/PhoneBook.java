@@ -12,22 +12,25 @@ public class PhoneBook {
     private final Map<String, List<String>> phonebook;
 
     public PhoneBook(Map<String, List<String>> map) {
-        this.phonebook = map;
+        this.phonebook = new LinkedHashMap<>(map);
     }
 
     public PhoneBook() {
-        this(new HashMap<>());
+        this(new LinkedHashMap<>());
     }
 
 
     public void add(String name, String phoneNumber) {
-
-
+        List<String> contacts = phonebook.computeIfAbsent(phoneNumber, key -> new ArrayList<>());
+        contacts.add(name);
     }
 
     public void addAll(String name, String... phoneNumbers) {
+        List<String> contacts = phonebook.computeIfAbsent(name, key -> new ArrayList<>());
 
+        contacts.addAll(Arrays.asList(phoneNumbers));
     }
+
 
     public void remove(String name) {
         phonebook.remove(name);
@@ -42,16 +45,31 @@ public class PhoneBook {
         return phonebook.get(name);
     }
 
-    public String reverseLookup(String phoneNumber)  {
-        return null;
+    public String reverseLookup(String phoneNumber) {
+
+        for (Map.Entry<String,List<String>> entry : phonebook.entrySet()){
+                if (entry.getValue().contains(phoneNumber)){
+                return entry.getKey();
+                }
+             }
+      return  null ;
     }
 
     public List<String> getAllContactNames() {
+        List<String> ContactNames = new ArrayList<>();
+        for (Map.Entry<String, List<String>> n : phonebook.entrySet()) {
+                  ContactNames.addAll(n.getValue()); }
 
-         return null;
+        return ContactNames;
+
     }
 
     public Map<String, List<String>> getMap() {
+
+
         return phonebook;
+
+
     }
+
 }
