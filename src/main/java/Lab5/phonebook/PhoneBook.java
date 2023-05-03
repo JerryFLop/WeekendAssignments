@@ -21,8 +21,10 @@ public class PhoneBook {
 
 
     public void add(String name, String phoneNumber) {
-        List<String> contacts = phonebook.computeIfAbsent(phoneNumber, key -> new ArrayList<>());
-        contacts.add(name);
+        if (!phonebook.containsKey(name)) {
+            phonebook.put(name, new ArrayList<>());
+        }
+        phonebook.get(name).add(phoneNumber);
     }
 
     public void addAll(String name, String... phoneNumbers) {
@@ -57,8 +59,8 @@ public class PhoneBook {
 
     public List<String> getAllContactNames() {
         List<String> ContactNames = new ArrayList<>();
-        for (Map.Entry<String, List<String>> n : phonebook.entrySet()) {
-                  ContactNames.addAll(n.getValue()); }
+        for (String name : phonebook.keySet()) {
+            ContactNames.add(name);                       }
 
         return ContactNames;
 
