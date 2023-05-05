@@ -60,7 +60,7 @@ public class PhoneBook {
     public List<String> getAllContactNames() {
         List<String> ContactNames = new ArrayList<>();
         for (String name : phonebook.keySet()) {
-            ContactNames.add(name);                       }
+            ContactNames.add(name);                }
 
         return ContactNames;
 
